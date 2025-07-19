@@ -7,9 +7,10 @@ const SHEET_ID = '147SwmzfHZZzEbWlwBBVYfXqgwJonSXekdN_iE9O9O0c';
 const PERSONAL_RANGE = 'PERSONAL!A2:E';
 const ADMIN_PASSWORD = 'admin123';
 
+// Fetch Data Function
 const fetchData = async (range) => {
   try {
-    const url = https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}?key=${API_KEY};
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(range)}?key=${API_KEY}`;
     const response = await axios.get(url);
     return response.data.values || [];
   } catch (error) {
@@ -77,6 +78,7 @@ export default function Dashboard() {
     );
   };
 
+  // Admin Login View
   if (!isAdmin) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-gray-100 z-50">
@@ -109,6 +111,7 @@ export default function Dashboard() {
     );
   }
 
+  // Main Dashboard View
   return (
     <div className="p-4 space-y-4 max-w-5xl mx-auto">
       <h1 className="text-2xl font-bold">College Dashboard - Personal Details</h1>
